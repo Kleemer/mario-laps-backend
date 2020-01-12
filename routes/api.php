@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Routing\Route;
-
 /**
  * Public routes
  */
