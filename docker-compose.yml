@@ -5,7 +5,6 @@ services:
   # The Application
   app:
     container_name: mariolaps_app
-    image: php:alpine
     volumes:
       - ./storage:/var/www/storage
     working_dir: /app
