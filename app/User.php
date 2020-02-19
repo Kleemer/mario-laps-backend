@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Traits\UuidAsPrimary;
-use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\Concern\UuidAsPrimary;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use Notifiable, UuidAsPrimary;
+    use Notifiable, UuidAsPrimary, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

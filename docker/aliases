@@ -1,2 +1,12 @@
 alias amfs='php artisan migrate:fresh; php artisan db:seed; php artisan cache:clear; php artisan passport:install;'
 alias at='php artisan tinker'
+
+alias pu='vendor/bin/phpunit'
+alias puf='vendor/bin/phpunit --filter'
+
+alias cda='composer dump-autoload'
+
+alias phpcs='./vendor/bin/phpcs'
+alias phpcbf='./vendor/bin/phpcbf'
+
+# source ./docker/aliases

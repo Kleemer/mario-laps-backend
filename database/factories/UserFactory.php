@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'username' => $faker->name,
         'avatar' => $faker->url
     ];
 });

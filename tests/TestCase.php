@@ -42,7 +42,7 @@ abstract class TestCase extends BaseTestCase
 
         // Create the user
         $this->authUser = factory(User::class)->create([
-            'username' => 'bulbasaur',
+            'username' => 'koopa',
             'password' => bcrypt('password'),
         ]);
     }
