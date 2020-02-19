@@ -20,6 +20,3 @@ RUN chown -R www-data:www-data \
         /var/www/bootstrap/cache
 
 RUN mv .env.production .env
-
-RUN sed -i "s/user = www-data/user = root/g" /usr/local/etc/php-fpm.d/www.conf
-RUN sed -i "s/group = www-data/group = root/g" /usr/local/etc/php-fpm.d/www.conf
