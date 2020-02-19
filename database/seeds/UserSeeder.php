@@ -1,9 +1,9 @@
 <?php
 
-use App\Player;
+use App\User;
 use Illuminate\Database\Seeder;
 
-class PlayerSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class PlayerSeeder extends Seeder
     public function run()
     {
         foreach(['Ouzt', 'Nathou', 'Pandalves', 'Yass'] as $username) {
-            Player::firstOrCreate([
+            User::firstOrCreate([
                 'username'  => $username
             ])->save();
         }

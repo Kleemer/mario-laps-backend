@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Race extends Model
 {
-    public function players()
+    public function users()
     {
-        return $this->hasMany(PlayerRace::class);
+        return $this->hasMany(UserRace::class);
     }
 }

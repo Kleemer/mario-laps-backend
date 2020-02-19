@@ -1,9 +1,9 @@
 <?php
 
-use App\Player;
+use App\User;
 use Faker\Generator as Faker;
 
-$factory->define(Player::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'avatar' => $faker->url

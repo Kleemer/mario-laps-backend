@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlayerRaceTable extends Migration
+class CreateUserRaceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreatePlayerRaceTable extends Migration
      */
     public function up()
     {
-        Schema::create('player_race', function (Blueprint $table) {
+        Schema::create('user_race', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('position');
 
-            $table->unsignedBigInteger('player_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('race_id');
 
             $table->timestamps();
 
-            $table->foreign('player_id')
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('players');
+                ->on('users');
             $table->foreign('race_id')
                 ->references('id')
                 ->on('races');
@@ -38,6 +38,6 @@ class CreatePlayerRaceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('player_race');
+        Schema::dropIfExists('user_race');
     }
 }

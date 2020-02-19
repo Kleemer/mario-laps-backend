@@ -7,7 +7,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Player extends Model
+class User extends Model
 {
     use Notifiable;
 
@@ -36,6 +36,6 @@ class Player extends Model
 
     public function races()
     {
-        return $this->hasMany(PlayerRace::class);
+        return $this->hasMany(UserRace::class);
     }
 }
