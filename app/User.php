@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Traits\UuidAsPrimary;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Model
 {
-    use Notifiable;
+    use Notifiable, UuidAsPrimary;
 
     /**
      * The attributes that are mass assignable.

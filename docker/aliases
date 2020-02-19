@@ -1,0 +1,2 @@
+alias amfs='php artisan migrate:fresh; php artisan db:seed; php artisan cache:clear; php artisan passport:install;'
+alias at='php artisan tinker'

@@ -14,8 +14,8 @@ class CreateRacesTable extends Migration
     public function up()
     {
         Schema::create('races', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('mario_lap_id');
+            $table->uuid('id')->primary();
+            $table->uuid('mario_lap_id');
             $table->timestamps();
 
             $table->foreign('mario_lap_id')

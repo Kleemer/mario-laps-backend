@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\UuidAsPrimary;
 use Illuminate\Database\Eloquent\Model;
 
 class MarioLaps extends Model
 {
+    use UuidAsPrimary;
+
     public function races()
     {
         return $this->hasMany(Race::class);

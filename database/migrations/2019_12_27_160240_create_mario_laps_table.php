@@ -14,7 +14,7 @@ class CreateMarioLapsTable extends Migration
     public function up()
     {
         Schema::create('mario_laps', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id')->primary();
             $table->timestamps();
         });
     }
