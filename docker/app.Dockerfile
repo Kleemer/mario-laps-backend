@@ -1,4 +1,4 @@
-FROM php:alpine
+FROM php:7.4-fpm-alpine
 
 COPY artisan /var/www/
 COPY composer.lock composer.json /var/www/
