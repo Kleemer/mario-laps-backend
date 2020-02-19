@@ -6,7 +6,7 @@ services:
   app:
     container_name: mariolaps_app
     volumes:
-      - .:/var/www/html
+      - .:/var/www
     working_dir: /app
     env_file: '.env.production'
     ports:
