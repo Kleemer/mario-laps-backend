@@ -37,8 +37,6 @@ services:
     build:
       context: ./
       dockerfile: docker/web.Dockerfile
-    volumes:
-      - ./storage/logs/:/var/log/nginx
     ports:
       - 3458:80
 
