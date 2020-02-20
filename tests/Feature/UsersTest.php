@@ -22,7 +22,7 @@ class UsersTest extends TestCase
         $this->postJson(
             route('register'),
             [
-                'username' => 'bulbasaur',
+                'username' => 'koopa',
                 'password' => 'password',
                 'password_confirm' => 'password',
             ]
@@ -60,13 +60,13 @@ class UsersTest extends TestCase
     public function testPostUserFailIfUsernameAlreadyUsed()
     {
         factory(User::class)->create([
-            'username' => 'bulbasaur'
+            'username' => 'koopa'
         ]);
 
         $this->postJson(
             route('register'),
             [
-                'username' => 'bulbasaur',
+                'username' => 'koopa',
                 'password' => 'password',
                 'password_confirm' => 'password',
             ]
@@ -85,7 +85,7 @@ class UsersTest extends TestCase
         $this->postJson(
             route('register'),
             [
-                'username' => 'bulbasaur',
+                'username' => 'koopa',
                 'password' => $password,
                 'password_confirm' => 'password',
             ]
@@ -109,7 +109,7 @@ class UsersTest extends TestCase
         $this->postJson(
             route('register'),
             [
-                'username' => 'bulbasaur',
+                'username' => 'koopa',
                 'password' => 'password',
                 'password_confirm' => '1password1',
             ]
