@@ -13,7 +13,7 @@ class CreateUserRaceTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_race', function (Blueprint $table) {
+        Schema::create('user_races', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->integer('position');
 
@@ -38,6 +38,6 @@ class CreateUserRaceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_race');
+        Schema::dropIfExists('user_races');
     }
 }

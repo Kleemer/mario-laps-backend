@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RaceResource extends JsonResource
+class UserRaceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,7 @@ class RaceResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'users' => UserRaceResource::collection($this->users),
+            'position' => $this->position,
         ];
     }
 }

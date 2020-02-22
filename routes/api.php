@@ -26,4 +26,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('mariolaps/{marioLap}/races', 'MarioLapRaceController@store')
         ->name('post.mariolaps.races');
+
+    Route::post('races/{race}', 'UserRaceController@store')
+        ->name('post.user-races');
 });
