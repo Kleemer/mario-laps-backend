@@ -9,6 +9,15 @@ class Race extends Model
 {
     use UuidAsPrimary;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'mario_lap_id',
+    ];
+
     public function users()
     {
         return $this->hasMany(UserRace::class);
