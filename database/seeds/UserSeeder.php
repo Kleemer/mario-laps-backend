@@ -14,7 +14,8 @@ class UserSeeder extends Seeder
     {
         foreach(['Ouzt', 'Nathou', 'Pandalves', 'Yass'] as $username) {
             User::firstOrCreate([
-                'username'  => $username
+                'username'  => $username,
+                'password'  => bcrypt('password'),
             ])->save();
         }
     }
