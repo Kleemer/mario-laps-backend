@@ -2,16 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\AuthRepositoryInterface;
+use Carbon\Carbon;
+use Illuminate\Contracts\Cookie\QueueingFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
-/**
- * @property mixed maxAttempts
- * @property mixed decayMinutes
- */
 class AuthController extends Controller
 {
+    /**
+     * @var QueueingFactory
+     */
+    private $queueingFactory;
+    /**
+     * @var AuthRepositoryInterface
+     */
+    private $authRepository;
+
+    /**
+     * AuthController constructor.
+     * @param QueueingFactory $queueingFactory
+     * @param AuthRepositoryInterface $authRepository
+     */
+    public function __construct(QueueingFactory $queueingFactory, AuthRepositoryInterface $authRepository) {
+        $this->queueingFactory = $queueingFactory;
+        $this->authRepository = $authRepository;
+    }
+
     /**
      * @return string
      */
@@ -31,8 +51,11 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $accessToken = Auth::user()->createToken('authToken')->accessToken;
 
-            return self::respondWithToken($accessToken)
-                ->setStatusCode(Response::HTTP_OK);
+            $this->queueingFactory->queue(
+                $this->authRepository->getLoginCookie($accessToken)
+            );
+
+            return self::respondWithToken();
         }
 
 
@@ -44,7 +67,15 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::user()->token()->revoke();
+        try {
+            JWTAuth::invalidate(JWTAuth::getToken());
+        } catch (JWTException $t) {
+            // Token expired/blacklisted, but it's fine in this case. Don't throw an exception.
+        }
+
+        $this->queueingFactory->queue(
+            $this->authRepository->getLogoutCookie()
+        );
 
         return response()
             ->make()
@@ -58,11 +89,23 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken()
     {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-        ]);
+        $content = [
+            'data' => null,
+        ];
+
+        $jwt = JWTAuth::factory();
+            $claims = $jwt->buildClaimsCollection();
+            $content['data'] = [
+                'exp' => Carbon::createFromTimeStamp($claims['exp']->getValue())->toIso8601ZuluString(),
+                'iat' => Carbon::createFromTimeStamp($claims['iat']->getValue())->toIso8601ZuluString(),
+                'ttl' => $jwt->getTTL() * 60 * 1000,
+            ];
+
+        return response()
+            ->make()
+            ->setContent($content)
+            ->setStatusCode(Response::HTTP_OK);
     }
 }
