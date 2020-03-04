@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\SessionResource;
-use App\Repository\SessionRepositoryInterface;
+use App\Http\Resources\MarioLapResource;
+use App\Repository\MarioLapRepositoryInterface;
 
-class SessionController extends Controller
+class MarioLapController extends Controller
 {
     /**
      * @deprecated
-     * @var SessionRepositoryInterface
+     * @var MarioLapRepositoryInterface
      */
     private $repository;
 
-    public function __construct(SessionRepositoryInterface $repository)
+    public function __construct(MarioLapRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
 
     public function index()
     {
-        return SessionResource::collection(
+        return MarioLapResource::collection(
             $this
                 ->repository
                 ->getActive()

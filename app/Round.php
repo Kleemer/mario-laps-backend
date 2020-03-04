@@ -10,7 +10,7 @@ class Round extends Model
     use UuidAsPrimary;
 
     protected $fillable = [
-        'session_id',
+        'mario_lap_id',
     ];
 
     public function races()

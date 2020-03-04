@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Session;
+use App\MarioLap;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
@@ -17,38 +17,38 @@ class RoundsTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     'id',
-                    'session_id',
+                    'mario_lap_id',
                     'races',
                 ],
             ])
             ->assertJsonCount(1, 'data.races');
     }
 
-    public function testPosRoundWithSessionId()
+    public function testPosRoundWithMarioLapId()
     {
-        $session = factory(Session::class)->create();
+        $marioLap = factory(MarioLap::class)->create();
 
         $this->authUserPost(
             route('post.rounds'), [
-                'session_id' => $session->id,
+                'mario_lap_id' => $marioLap->id,
             ]
         )
             ->assertSuccessful()
             ->assertJsonStructure([
                 'data' => [
                     'id',
-                    'session_id',
+                    'mario_lap_id',
                     'races',
                 ],
             ])
             ->assertJsonCount(1, 'data.races');
     }
 
-    public function testPostRoundWithInvalidSessionId()
+    public function testPostRoundWithInvalidMarioLapId()
     {
         $this->authUserPost(
             route('post.rounds', [
-                'session_id' => 'invalid id',
+                'mario_lap_id' => 'invalid id',
             ])
         )
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);

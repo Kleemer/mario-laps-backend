@@ -6,15 +6,15 @@ namespace App\Providers;
 
 use App\Repository\AuthRepository;
 use App\Repository\AuthRepositoryInterface;
-use App\Repository\SessionRepository;
-use App\Repository\SessionRepositoryInterface;
+use App\Repository\MarioLapRepository;
+use App\Repository\MarioLapRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected const MAP_REPOSITORIES = [
         AuthRepositoryInterface::class => AuthRepository::class,
-        SessionRepositoryInterface::class => SessionRepository::class,
+        MarioLapRepositoryInterface::class => MarioLapRepository::class,
     ];
 
     /**

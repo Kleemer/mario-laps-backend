@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSessionsTable extends Migration
+class CreateMarioLapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('mario_laps', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->timestamps();
         });
 
         Schema::table('rounds', function (Blueprint $table) {
-            $table->uuid('session_id');
+            $table->uuid('mario_lap_id');
 
-            $table->foreign('session_id')
+            $table->foreign('mario_lap_id')
                 ->references('id')
-                ->on('sessions');
+                ->on('mario_laps');
         });
     }
 
@@ -35,8 +35,8 @@ class CreateSessionsTable extends Migration
     public function down()
     {
         Schema::table('rounds', function (Blueprint $table) {
-            $table->dropForeign(['session_id']);
+            $table->dropForeign(['mario_lap_id']);
         });
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('mario_laps');
     }
 }

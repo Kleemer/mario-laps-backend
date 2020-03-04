@@ -2,20 +2,20 @@
 
 namespace App\Rules;
 
-use App\Session;
+use App\MarioLap;
 use Illuminate\Contracts\Validation\Rule;
 
 class RoundRule implements Rule
 {
     public function passes($attribute, $value)
     {
-        $session = Session::where('id', $value)->first();
+        $marioLap = MarioLap::where('id', $value)->first();
 
-        return !!$session;
+        return !!$marioLap;
     }
 
     public function message()
     {
-        return 'This session is closed.';
+        return 'This Mario Lap is closed.';
     }
 }

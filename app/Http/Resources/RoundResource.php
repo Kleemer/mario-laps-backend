@@ -16,7 +16,7 @@ class RoundResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'session_id' => $this->session_id,
+            'mario_lap_id' => $this->mario_lap_id,
             'races' => RaceResource::collection($this->races),
             'created_at' => $this->created_at->toIso8601ZuluString(),
         ];

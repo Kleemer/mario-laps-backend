@@ -2,9 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Session;
+use App\MarioLap;
 use Faker\Generator as Faker;
 
-$factory->define(Session::class, function (Faker $faker) {
+$factory->define(MarioLap::class, function (Faker $faker) {
     return [];
 });

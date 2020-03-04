@@ -3,30 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\RoundResource;
+use App\MarioLap;
 use App\Round;
 use App\Race;
 use App\Rules\RoundRule;
-use App\Session;
 
 class RoundController extends Controller
 {
     public function store()
     {
         request()->validate([
-            'session_id' => [
+            'mario_lap_id' => [
                 'sometimes',
                 new RoundRule
             ]
         ]);
 
-        $sessionId = request('session_id');
+        $marioLapId = request('mario_lap_id');
 
-        if (!$sessionId) {
-            $sessionId = Session::create()->id;
+        if (!$marioLapId) {
+            $marioLapId = MarioLap::create()->id;
         }
 
         $round = Round::create([
-            'session_id' => $sessionId,
+            'mario_lap_id' => $marioLapId,
         ]);
 
         Race::create([

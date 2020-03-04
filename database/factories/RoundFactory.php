@@ -2,14 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\MarioLap;
 use App\Round;
-use App\Session;
 use Faker\Generator as Faker;
 
 $factory->define(Round::class, function (Faker $faker) {
     return [
-        'session_id' => function () {
-            return factory(Session::class)->create()->id;
+        'mario_lap_id' => function () {
+            return factory(MarioLap::class)->create()->id;
         },
     ];
 });

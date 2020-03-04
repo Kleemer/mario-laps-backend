@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use Illuminate\Database\Eloquent\Collection;
 
-interface SessionRepositoryInterface
+interface MarioLapRepositoryInterface
 {
     public function getActive(): Collection;
 }
