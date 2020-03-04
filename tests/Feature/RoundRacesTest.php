@@ -2,20 +2,20 @@
 
 namespace Tests\Feature;
 
-use App\MarioLap;
+use App\Round;
 use Tests\TestCase;
 
-class MarioLapRacesTest extends TestCase
+class RoundRacesTest extends TestCase
 {
-    public function testPostMarioLapRace()
+    public function testPostRoundRace()
     {
-        $marioLap = factory(MarioLap::class)->create();
+        $round = factory(Round::class)->create();
 
-        $countRace = $marioLap->races()->count();
+        $countRace = $round->races()->count();
 
         $this->authUserPost(
-            route('post.mariolaps.races', [
-                'marioLap' => $marioLap->id,
+            route('post.rounds.races', [
+                'round' => $round->id,
             ])
         )
             ->assertSuccessful()

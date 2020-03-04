@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\MarioLap;
+use App\Round;
 use App\Session;
 use Carbon\Carbon;
 use Tests\TestCase;
@@ -27,7 +27,7 @@ class SessionsTest extends TestCase
             'created_at' => Carbon::now(),
         ]);
 
-        factory(MarioLap::class)->create([
+        factory(Round::class)->create([
             'session_id' => $activeSession->id,
         ]);
 
@@ -40,7 +40,7 @@ class SessionsTest extends TestCase
                 'data' => [
                     '*' => [
                         'id',
-                        'mario_laps',
+                        'rounds',
                         'created_at',
                     ],
                 ],

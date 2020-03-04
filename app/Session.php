@@ -9,8 +9,8 @@ class Session extends Model
 {
     use UuidAsPrimary;
 
-    public function marioLaps()
+    public function rounds()
     {
-        return $this->hasMany(MarioLap::class);
+        return $this->hasMany(Round::class);
     }
 }

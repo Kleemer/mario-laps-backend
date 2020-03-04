@@ -5,7 +5,7 @@ namespace App;
 use App\Http\Controllers\Concern\UuidAsPrimary;
 use Illuminate\Database\Eloquent\Model;
 
-class MarioLap extends Model
+class Round extends Model
 {
     use UuidAsPrimary;
 

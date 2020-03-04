@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\MarioLap;
 use App\Race;
+use App\Round;
 use App\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +27,8 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-        Route::bind('marioLap', function ($param) {
-            return MarioLap::where('id', $param)->firstOrFail();
+        Route::bind('round', function ($param) {
+            return Round::where('id', $param)->firstOrFail();
         });
         Route::bind('race', function ($param) {
             return Race::where('id', $param)->firstOrFail();

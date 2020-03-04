@@ -15,12 +15,12 @@ class CreateRacesTable extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('mario_lap_id');
+            $table->uuid('round_id');
             $table->timestamps();
 
-            $table->foreign('mario_lap_id')
+            $table->foreign('round_id')
                 ->references('id')
-                ->on('mario_laps');
+                ->on('rounds');
         });
     }
 

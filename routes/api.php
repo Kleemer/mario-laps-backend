@@ -24,11 +24,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('sessions', 'SessionController@index')
         ->name('get.active_sessions');
 
-    Route::post('mariolaps', 'MarioLapController@store')
-        ->name('post.mariolaps');
+    Route::post('rounds', 'RoundController@store')
+        ->name('post.rounds');
 
-    Route::post('mariolaps/{marioLap}/races', 'MarioLapRaceController@store')
-        ->name('post.mariolaps.races');
+    Route::post('rounds/{round}/races', 'RoundRaceController@store')
+        ->name('post.rounds.races');
 
     Route::post('races/{race}', 'UserRaceController@store')
         ->name('post.user-races');

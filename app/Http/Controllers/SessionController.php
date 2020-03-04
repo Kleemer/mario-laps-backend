@@ -26,7 +26,7 @@ class SessionController extends Controller
             $this
                 ->repository
                 ->getActive()
-                ->load(['marioLaps'])
+                ->load(['rounds'])
         );
     }
 }

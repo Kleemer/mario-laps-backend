@@ -16,7 +16,7 @@ class SessionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'mario_laps' => MarioLapResource::collection($this->marioLaps),
+            'rounds' => RoundResource::collection($this->rounds),
             'created_at' => $this->created_at->toIso8601ZuluString(),
         ];
     }

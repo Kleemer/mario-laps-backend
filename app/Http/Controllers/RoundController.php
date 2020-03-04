@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\MarioLapResource;
-use App\MarioLap;
+use App\Http\Resources\RoundResource;
+use App\Round;
 use App\Race;
-use App\Rules\MarioLapRule;
+use App\Rules\RoundRule;
 use App\Session;
 
-class MarioLapController extends Controller
+class RoundController extends Controller
 {
     public function store()
     {
         request()->validate([
             'session_id' => [
                 'sometimes',
-                new MarioLapRule
+                new RoundRule
             ]
         ]);
 
@@ -25,16 +25,16 @@ class MarioLapController extends Controller
             $sessionId = Session::create()->id;
         }
 
-        $marioLap = MarioLap::create([
+        $round = Round::create([
             'session_id' => $sessionId,
         ]);
 
         Race::create([
-            'mario_lap_id' => $marioLap->id,
+            'round_id' => $round->id,
         ]);
 
-        return new MarioLapResource(
-            $marioLap->load(['races'])
+        return new RoundResource(
+            $round->load(['races'])
         );
     }
 }

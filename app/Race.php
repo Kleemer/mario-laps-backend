@@ -15,7 +15,7 @@ class Race extends Model
      * @var array
      */
     protected $fillable = [
-        'mario_lap_id',
+        'round_id',
     ];
 
     public function users()

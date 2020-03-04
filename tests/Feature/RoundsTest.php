@@ -6,12 +6,12 @@ use App\Session;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
-class MarioLapsTest extends TestCase
+class RoundsTest extends TestCase
 {
-    public function testPostMarioLap()
+    public function testPostRound()
     {
         $this->authUserPost(
-            route('post.mariolaps')
+            route('post.rounds')
         )
             ->assertSuccessful()
             ->assertJsonStructure([
@@ -24,12 +24,12 @@ class MarioLapsTest extends TestCase
             ->assertJsonCount(1, 'data.races');
     }
 
-    public function testPostMarioLapWithSessionId()
+    public function testPosRoundWithSessionId()
     {
         $session = factory(Session::class)->create();
 
         $this->authUserPost(
-            route('post.mariolaps'), [
+            route('post.rounds'), [
                 'session_id' => $session->id,
             ]
         )
@@ -44,10 +44,10 @@ class MarioLapsTest extends TestCase
             ->assertJsonCount(1, 'data.races');
     }
 
-    public function testPostMarioLapWithInvalidSessionId()
+    public function testPostRoundWithInvalidSessionId()
     {
         $this->authUserPost(
-            route('post.mariolaps', [
+            route('post.rounds', [
                 'session_id' => 'invalid id',
             ])
         )

@@ -5,7 +5,7 @@ namespace App\Rules;
 use App\Session;
 use Illuminate\Contracts\Validation\Rule;
 
-class MarioLapRule implements Rule
+class RoundRule implements Rule
 {
     public function passes($attribute, $value)
     {
