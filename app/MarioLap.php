@@ -9,6 +9,10 @@ class MarioLap extends Model
 {
     use UuidAsPrimary;
 
+    protected $fillable = [
+        'session_id',
+    ];
+
     public function races()
     {
         return $this->hasMany(Race::class);
