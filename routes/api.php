@@ -21,6 +21,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('users', 'UserController@index')
         ->name('get.users');
 
+    Route::get('sessions', 'SessionController@index')
+        ->name('get.active_sessions');
+
     Route::post('mariolaps', 'MarioLapController@store')
         ->name('post.mariolaps');
 
