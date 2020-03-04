@@ -9,8 +9,8 @@ use App\Repository\SessionRepositoryInterface;
 
 class SessionController extends Controller
 {
-
     /**
+     * @deprecated
      * @var SessionRepositoryInterface
      */
     private $repository;
