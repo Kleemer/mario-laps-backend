@@ -8,23 +8,7 @@ use Tests\TestCase;
 
 class RoundsTest extends TestCase
 {
-    public function testPostRound()
-    {
-        $this->authUserPost(
-            route('post.rounds')
-        )
-            ->assertSuccessful()
-            ->assertJsonStructure([
-                'data' => [
-                    'id',
-                    'mario_lap_id',
-                    'races',
-                ],
-            ])
-            ->assertJsonCount(1, 'data.races');
-    }
-
-    public function testPosRoundWithMarioLapId()
+    public function testPostRoundWithMarioLapId()
     {
         $marioLap = factory(MarioLap::class)->create();
 
@@ -42,6 +26,15 @@ class RoundsTest extends TestCase
                 ],
             ])
             ->assertJsonCount(1, 'data.races');
+    }
+
+    public function testPosRoundWithoutMarioLapId()
+    {
+
+        $this->authUserPost(
+            route('post.rounds')
+        )
+        ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function testPostRoundWithInvalidMarioLapId()

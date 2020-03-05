@@ -21,8 +21,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('users', 'UserController@index')
         ->name('get.users');
 
-    Route::get('mario-laps', 'MarioLapController@index')
-        ->name('get.active_mario_laps');
+    Route::post('mario-laps', 'MarioLapController@store')
+        ->name('post.mario_laps');
 
     Route::post('rounds', 'RoundController@store')
         ->name('post.rounds');

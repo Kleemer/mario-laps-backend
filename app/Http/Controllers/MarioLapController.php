@@ -5,28 +5,24 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Resources\MarioLapResource;
-use App\Repository\MarioLapRepositoryInterface;
+use App\MarioLap;
+use App\Race;
+use App\Round;
 
 class MarioLapController extends Controller
 {
-    /**
-     * @deprecated
-     * @var MarioLapRepositoryInterface
-     */
-    private $repository;
-
-    public function __construct(MarioLapRepositoryInterface $repository)
+    public function store()
     {
-        $this->repository = $repository;
-    }
+        $marioLap = MarioLap::create();
 
-    public function index()
-    {
-        return MarioLapResource::collection(
-            $this
-                ->repository
-                ->getActive()
-                ->load(['rounds'])
-        );
+        $round = Round::create([
+            'mario_lap_id' => $marioLap->id,
+        ]);
+
+        Race::create([
+            'round_id' => $round->id,
+        ]);
+
+        return new MarioLapResource($marioLap->load(['rounds.races']));
     }
 }
