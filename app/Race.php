@@ -9,6 +9,10 @@ class Race extends Model
 {
     use UuidAsPrimary;
 
+    protected $casts = [
+        'with_lap' => 'boolean',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,6 +20,7 @@ class Race extends Model
      */
     protected $fillable = [
         'round_id',
+        'with_lap',
     ];
 
     public function users()

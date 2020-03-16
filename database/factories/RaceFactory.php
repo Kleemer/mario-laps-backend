@@ -11,5 +11,8 @@ $factory->define(Race::class, function (Faker $faker) {
         'round_id' => function() {
             return factory(Round::class)->create()->id;
         },
+        'with_lap' => function() {
+            return false;
+        },
     ];
 });

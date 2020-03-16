@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Race;
 use App\Round;
 use Tests\TestCase;
 
@@ -9,7 +10,8 @@ class RoundRacesTest extends TestCase
 {
     public function testPostRoundRace()
     {
-        $round = factory(Round::class)->create();
+        $race = factory(Race::class)->create();
+        $round = Round::whereId($race->round_id)->first();
 
         $countRace = $round->races()->count();
 

@@ -32,4 +32,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('races/{race}', 'UserRaceController@store')
         ->name('post.user-races');
+
+    Route::patch('races/{race}/lap', 'RaceLapController@update')
+        ->name('patch.races.lap');
 });

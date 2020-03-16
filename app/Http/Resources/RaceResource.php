@@ -17,6 +17,7 @@ class RaceResource extends JsonResource
         return [
             'id' => $this->id,
             'users' => UserRaceResource::collection($this->users),
+            'with_lap' => $this->with_lap,
         ];
     }
 }
