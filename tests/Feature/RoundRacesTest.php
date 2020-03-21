@@ -24,9 +24,13 @@ class RoundRacesTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     'id',
-                    'races',
+                    'users',
+                    'with_lap'
                 ],
-            ])
-            ->assertJsonCount($countRace + 1, 'data.races');
+            ]);
+
+        $newCountRace = $round->races()->count();
+
+        $this->assertSame($newCountRace, $countRace + 1);
     }
 }

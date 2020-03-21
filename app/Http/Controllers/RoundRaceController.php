@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\RoundResource;
+use App\Http\Resources\RaceResource;
 use App\Race;
 use App\Round;
 
@@ -12,11 +12,11 @@ class RoundRaceController extends Controller
     {
         $previousRace = $round->races()->latest()->first();
 
-        Race::create([
+        $newRace = Race::create([
             'round_id' => $round->id,
             'with_lap' => $previousRace->with_lap,
         ]);
 
-        return new RoundResource($round->load(['races']));
+        return new RaceResource($newRace);
     }
 }
