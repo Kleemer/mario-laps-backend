@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Repository\AuthRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Contracts\Cookie\QueueingFactory;
@@ -80,6 +81,11 @@ class AuthController extends Controller
         return response()
             ->make()
             ->setStatusCode(Response::HTTP_OK);
+    }
+
+    public function me()
+    {
+        return new UserResource(Auth::user());
     }
 
     /**
