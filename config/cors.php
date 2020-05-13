@@ -2,7 +2,9 @@
 
 return [
     'supports_credentials' => false,
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [
+        'http://*.herokuapp.com',
+    ],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'allowed_methods' => ['*'],
