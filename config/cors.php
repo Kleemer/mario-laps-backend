@@ -6,6 +6,8 @@ return [
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'allowed_methods' => ['*'],
-    'exposed_headers' => [],
+    'exposed_headers' => [
+        'Authorization'
+    ],
     'max_age' => 0,
 ];
