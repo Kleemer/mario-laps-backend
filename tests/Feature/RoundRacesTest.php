@@ -24,7 +24,7 @@ class RoundRacesTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     'id',
-                    'users',
+                    'user_races',
                     'with_lap'
                 ],
             ]);

@@ -22,7 +22,7 @@ class MarioLapsTest extends TestCase
                             'races' => [
                                 '*' => [
                                     'id',
-                                    'users'
+                                    'user_races'
                                 ]
                             ]
                         ]

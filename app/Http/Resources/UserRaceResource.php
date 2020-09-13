@@ -16,6 +16,7 @@ class UserRaceResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'race_id' => $this->race_id,
             'user_id' => $this->user_id,
             'position' => $this->position,
         ];

@@ -39,3 +39,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::patch('races/{race}/lap', 'RaceLapController@update')
         ->name('patch.races.lap');
 });
+
+// Default API route
+Route::get('/', function () {
+    return "You've hit the Mario Laps API.";
+});
