@@ -23,7 +23,7 @@ class UserRacesTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     'id',
-                    'users' => [
+                    'user_races' => [
                         '*' => [
                             'id',
                             'position',

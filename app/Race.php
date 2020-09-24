@@ -21,10 +21,16 @@ class Race extends Model
     protected $fillable = [
         'round_id',
         'with_lap',
+        'race_type_id'
     ];
 
     public function users()
     {
         return $this->hasMany(UserRace::class);
+    }
+
+    public function raceType()
+    {
+        return $this->belongsTo(RaceType::class);
     }
 }

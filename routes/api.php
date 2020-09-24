@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::patch('races/{race}/lap', 'RaceLapController@update')
         ->name('patch.races.lap');
+
+    Route::patch('races/{race}/type', 'RaceTypeController@update')
+        ->name('patch.races.type');
 });
 
 // Default API route
