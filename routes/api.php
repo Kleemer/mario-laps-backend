@@ -33,6 +33,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('rounds/{round}/races', 'RoundRaceController@store')
         ->name('post.rounds.races');
 
+    Route::delete('rounds/{round}/races/{race}', 'RoundRaceController@destroy')
+        ->name('delete.rounds.races');
+
     Route::post('races/{race}', 'UserRaceController@store')
         ->name('post.user-races');
 

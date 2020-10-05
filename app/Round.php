@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use App\Http\Controllers\Concern\UuidAsPrimary;
@@ -12,6 +14,11 @@ class Round extends Model
     protected $fillable = [
         'mario_lap_id',
     ];
+
+    public function marioLap()
+    {
+        return $this->belongsTo(MarioLap::class);
+    }
 
     public function races()
     {

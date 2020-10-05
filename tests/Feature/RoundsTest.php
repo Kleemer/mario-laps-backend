@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\MarioLap;
+use App\Race;
+use App\Round;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
@@ -45,5 +49,24 @@ class RoundsTest extends TestCase
             ])
         )
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    public function testPostRoundKeepWithLapValue()
+    {
+        $race = factory(Race::class)->create([
+            'with_lap' => true,
+        ]);
+        $round = Round::whereId($race->round_id)->first();
+
+        $response = $this->authUserPost(
+            route('post.rounds', [
+                'mario_lap_id' => $round->mario_lap_id,
+            ])
+        )
+            ->assertSuccessful();
+
+        $newRound = $this->getResponseData($response);
+
+        $this->assertTrue($newRound['races'][0]['with_lap']);
     }
 }

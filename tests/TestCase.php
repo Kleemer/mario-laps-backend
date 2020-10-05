@@ -99,4 +99,14 @@ abstract class TestCase extends BaseTestCase
 
         return $this->deleteJson($uri, $parameters, $headers);
     }
+
+    /**
+     * @param $response
+     * @param string $key
+     * @return array
+     */
+    public function getResponseData($response, string $key = 'data'): array
+    {
+        return json_decode($response->getContent(), true)[$key];
+    }
 }

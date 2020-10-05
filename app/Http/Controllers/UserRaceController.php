@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Resources\RaceResource;
@@ -12,6 +14,10 @@ class UserRaceController extends Controller
 {
     public function store(Race $race)
     {
+        request()->validate([
+            'position' => 'required|integer',
+        ]);
+
         abort_if(
             UserRace::where('race_id', $race->id)->where('position', request('position'))->exists(),
             Response::HTTP_UNPROCESSABLE_ENTITY

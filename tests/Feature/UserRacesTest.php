@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Race;
@@ -31,6 +33,19 @@ class UserRacesTest extends TestCase
                     ],
                 ],
             ]);
+    }
+
+    public function testCannotPostUserRaceIfPositionIsInvalid()
+    {
+        $race = factory(Race::class)->create();
+
+        $this->authUserPost(
+            route('post.user-races', [
+                'race' => $race->id,
+                'position' => 'NaN',
+            ])
+        )
+        ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function testCannotPostUserRaceIfPositionAlreadyTaken()

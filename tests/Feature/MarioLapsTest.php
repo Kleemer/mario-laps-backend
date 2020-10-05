@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use Tests\TestCase;
@@ -15,18 +17,7 @@ class MarioLapsTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     'id',
-                    'rounds' => [
-                        '*' => [
-                            'id',
-                            'mario_lap_id',
-                            'races' => [
-                                '*' => [
-                                    'id',
-                                    'user_races'
-                                ]
-                            ]
-                        ]
-                    ],
+                    'rounds' => [],
                 ],
             ]);
     }
